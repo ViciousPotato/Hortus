@@ -7,6 +7,7 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="/css/docco.css" />
+  <link rel="stylesheet" type="text/css" href="/css/highlighter/xcode.css">
 </head>
 <body>
   <div id="container">
@@ -143,7 +144,9 @@ from our rules and saves it into <code>lib/parser.js</code>.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>{Parser} = require <span class="string">'jison'</span></pre></div></div>
+            <div class="content">
+              <pre class="python"><code>import os</code></pre>
+              <div class='highlight'><pre>{Parser} = require <span class="string">'jison'</span></pre></div></div>
             
         </li>
         
@@ -1659,5 +1662,11 @@ precedence from low to high, and we have it high to low
         
     </ul>
   </div>
+
+  <script type="text/javascript" src="/js/highlight.pack.js"></script>
+  <script type="text/javascript">
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+  </script>
 </body>
 </html>
