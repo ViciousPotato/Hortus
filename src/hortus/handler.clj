@@ -1,10 +1,12 @@
 (ns hortus.handler
-  (:use compojure.core)
+  (:use compojure.core
+        hortus.views)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/" [] (index-page))
+  (GET ["/code/:path", :path #".+"] [path] code-page)
   (route/resources "/")
   (route/not-found "Not Found"))
 
