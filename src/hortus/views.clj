@@ -1,6 +1,8 @@
 (ns hortus.views
   (:use [hiccup core page]
-        [hortus.filetype]))
+        [hortus.filetype]
+        [hortus.highlighter]
+        [clojure.java.io]))
 
 (defn index-page []
   (html5
@@ -20,7 +22,7 @@
       [:title (str "Hortus" "-" path)]
       [:meta {:http-equiv "content-type" :content "text/html; charset=UTF-8"}]
       [:link {:rel "stylesheet" :media "all" :href "/css/docco.css"}]
-      [:link {:rel "stylesheet" :media "all" :href "/css/highlighter/xcode.css"}]
+      [:link {:rel "stylesheet" :media "all" :href "/css/pygments_style.css"}]
     ]
     [:body
       [:div#container
@@ -34,13 +36,13 @@
           [:li#title [:div.annotation [:h1 "Code"]]]
           [:li#section-1 
             [:div.annotation "Nothing"]
-            [:div.content 
-              [:pre [:code {:class (deduce-file-type path)} (read-file path)]]
+            [:div.content.syntax
+              (highlight-code (read-file path)) 
+              ;[:pre [:code {:class (deduce-file-type path)} (read-file path)]]
             ]
           ]
         ]
       ]
-      [:script {:type "text/javascript" :src "/js/highlight.pack.js"}]
       [:script {:type "text/javascript" :src "/js/hortus.js"}]
     ]
   ))
