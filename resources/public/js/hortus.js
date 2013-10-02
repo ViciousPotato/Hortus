@@ -6,11 +6,6 @@ $(document).ready(function() {
     indicator: 'Saving...',
     type: 'textarea',
     submit: 'OK',
-    cancel: 'Cancel',
-    callback: function() {
-      $('#section-1 .annotation p').editable({
-        type: 'textarea'
-      });
-    }
+    cancel: 'Cancel'
   });
 });
