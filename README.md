@@ -1,7 +1,7 @@
 Hortus
 ======
 
-Lisp in Summer Project - Hortus, a code annotation tool
+Lisp in Summer Project 
 
 ![Screenshot](Screen Shot 2013-10-02.png)
 
