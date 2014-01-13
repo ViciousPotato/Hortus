@@ -59,3 +59,6 @@
 ;;/annotation/:part
 (defn api-annotation [ctx]
   (md-to-html-string (val (find (:form-params ctx) "value"))))
+
+(defn create-file [ctx]
+  1)

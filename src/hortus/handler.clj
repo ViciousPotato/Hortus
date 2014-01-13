@@ -8,6 +8,7 @@
 (defroutes app-routes
   (GET  "/" {session :session} (index-page))
   (GET  ["/code/:path", :path #".+"] [path] code-page)
+  (POST ["/code"] [] create-file)
   (POST ["/annotation/:part"] [part] api-annotation)
   (route/resources "/")
   (route/not-found "Not Found"))

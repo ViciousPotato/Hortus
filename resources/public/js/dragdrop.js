@@ -1,5 +1,5 @@
 var holder = document.getElementById('holder'),
-    state = document.getElementById('status');
+    state  = document.getElementById('status');
 
 /*
 if (typeof window.FileReader === 'undefined') {
@@ -17,19 +17,22 @@ holder.ondragover = function (evt) {
   return false; 
 };
 
-holder.ondragend = function () { this.className = ''; return false; };
-holder.ondrop = function (e) {
+holder.ondragend = function () {
   this.className = '';
+  return false;
+};
+
+holder.ondrop = function (e) {
   e.preventDefault();
 
-  var file = e.dataTransfer.files[0],
+  var file   = e.dataTransfer.files[0],
       reader = new FileReader();
-  debugger;
+
   reader.onload = function (event) {
     console.log(event.target);
-    holder.style.background = 'url(' + event.target.result + ') no-repeat center';
+    console.log(event.target.result);
   };
-  console.log(file);
+
   reader.readAsDataURL(file);
 
   return false;
