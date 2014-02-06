@@ -7,9 +7,11 @@
                  [org.pygments/pygments "1.6"]
                  [org.clojure/java.jdbc "0.3.0-alpha5"]
                  [org.xerial/sqlite-jdbc "3.7.2"]
-                 [markdown-clj "0.9.33"]]
+                 [markdown-clj "0.9.33"]
+                 [org.clojure/data.codec "0.1.0"]
+                 [digest "1.4.3"]]
   :plugins [[lein-ring "0.8.5"]
             [hiccup-bridge "1.0.0-SNAPSHOT"]]
-  :ring {:handler hortus.handler/app}
+  :ring {:init hortus.handler/init :handler hortus.handler/app}
   :profiles
   {:dev {:dependencies [[ring-mock "0.1.5"]]}})

@@ -5,7 +5,9 @@
         hortus.highlighter
         clojure.java.io
         markdown.core
-        ))
+        clojure.data.codec.base64
+        )
+  (:require digest))
 
 (defn index-page []
   (html5
@@ -16,6 +18,7 @@
     [:body
       [:div#holder]
       [:p#status "Drop your file"]
+      [:script {:type "text/javascript" :src "/js/jquery-1.10.2.min.js"}]
       [:script {:type "text/javascript" :src "/js/dragdrop.js"}]
     ]))
 
@@ -60,5 +63,8 @@
 (defn api-annotation [ctx]
   (md-to-html-string (val (find (:form-params ctx) "value"))))
 
-(defn create-file [ctx]
-  1)
+(defn create-code [filename content]
+  (println filename)
+  (let [code-content (String. (decode (byte-array (map byte content))))
+        md5          (digest/md5 code-content)]
+    (insert-code {:filename filename :content code-content :md5 md5})))

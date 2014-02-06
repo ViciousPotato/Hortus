@@ -29,8 +29,16 @@ holder.ondrop = function (e) {
       reader = new FileReader();
 
   reader.onload = function (event) {
-    console.log(event.target);
-    console.log(event.target.result);
+    var content = event.target.result.split('base64,')[1];
+
+    $.post('/code', {
+      filename: file.name,
+      content:  content
+    }).done(function() {
+      alert('ok');
+    }).fail(function() {
+      alert('fail');
+    });
   };
 
   reader.readAsDataURL(file);
