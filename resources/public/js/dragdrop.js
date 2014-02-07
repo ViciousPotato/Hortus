@@ -34,10 +34,11 @@ holder.ondrop = function (e) {
     $.post('/code', {
       filename: file.name,
       content:  content
-    }).done(function() {
-      alert('ok');
+    }).done(function(data) {
+      location.href="/code/"+data;
     }).fail(function() {
-      alert('fail');
+      alert('Something wrong posting to /code');
+      debugger;
     });
   };
 

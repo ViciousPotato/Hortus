@@ -13,7 +13,7 @@
 
 (defroutes app-routes
   (GET  "/" {session :session} (index-page))
-  (GET  ["/code/:path", :path #".+"] [path] code-page)
+  (GET  ["/code/:md5"] [md5] (code-page md5))
   (POST ["/code"] [filename content] (create-code filename content))
   (POST ["/annotation/:part"] [part] api-annotation)
   (route/resources "/")

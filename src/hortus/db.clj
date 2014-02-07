@@ -40,3 +40,13 @@
 (defn insert-code [code]
   (with-connection db
     (insert-records :code code)))
+
+(defn code-exist [md5]
+  (with-connection db
+    (with-query-results res ["SELECT count(*) as cnt FROM code WHERE md5=?" md5]
+      (> (:cnt (first (doall res))) 0))))
+
+(defn get-code-by-md5 [md5]
+  (with-connection db
+    (with-query-results res ["SELECT * FROM code WHERE md5=?" md5]
+      (first res))))
