@@ -29,8 +29,10 @@ holder.ondrop = function (e) {
       reader = new FileReader();
 
   reader.onload = function (event) {
-    console.log(event.target);
-    console.log(event.target.result);
+    // Request for md5 of file and redirect to /code/:md5
+    $.post('/code', {'code': event.target.result}, function(data) {
+      alert(data);
+    });
   };
 
   reader.readAsDataURL(file);

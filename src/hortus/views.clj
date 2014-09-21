@@ -16,6 +16,8 @@
     [:body
       [:div#holder]
       [:p#status "Drop your file"]
+
+      [:script {:type "text/javascript" :src "/js/jquery-1.10.2.min.js"}]
       [:script {:type "text/javascript" :src "/js/dragdrop.js"}]
     ]))
 
@@ -60,5 +62,5 @@
 (defn api-annotation [ctx]
   (md-to-html-string (val (find (:form-params ctx) "value"))))
 
-(defn create-file [ctx]
-  1)
+(defn create-file [code]
+  code)
