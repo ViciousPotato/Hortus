@@ -13,9 +13,13 @@
 
 (defroutes app-routes
   (GET  "/" {session :session} (index-page))
+  ;; code
   (GET  ["/code/:md5"] [md5] (code-page md5))
   (POST ["/code"] [filename content] (create-code filename content))
-  (POST ["/annotation/:part"] [part] api-annotation)
+  ;; annotation
+  (POST ["/annotation/:md5/title"]   [md5 value] (api-annotation-title md5 value))
+  (POST ["/annotation/:md5/content"] [md5 value] (api-annotation-content md5 value))
+  
   (route/resources "/")
   (route/not-found "Not Found"))
 

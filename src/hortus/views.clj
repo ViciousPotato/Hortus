@@ -61,14 +61,15 @@
       ]
   )))
 
-;;/annotation/:part
-(defn api-annotation [ctx]
-  (md-to-html-string (val (find (:form-params ctx) "value"))))
+;; FIX this
+(defn api-annotation-title [md5 value]
+  (update-annotation {:md5 md5 :title value})
+  (md-to-html-string value))
 
-<<<<<<< HEAD
-(defn create-file [code]
-  code)
-=======
+(defn api-annotation-content [md5 value]
+  (update-annotation {:md5 md5 :content value})
+  (md-to-html-string value))
+
 (defn base64-decode [ascii-str]
   (String. (decode (byte-array (map byte ascii-str)))))
 
@@ -77,4 +78,3 @@
         md5          (digest/md5 code-content)]
     (insert-code {:filename filename :content code-content :md5 md5})
     md5))
->>>>>>> 60c487e8923a4e5670a2bd7f7e0aac9b657b6d41

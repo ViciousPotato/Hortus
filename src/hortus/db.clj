@@ -11,9 +11,9 @@
   (try (with-connection db
     (create-table :annotations
       [:id      "INTEGER PRIMARY KEY AUTOINCREMENT"]
-      [:code_id :int]
-      [:lines   :text]
-      [:content :text]))
+      [:code-md5 :text]
+      [:title    :text]
+      [:content  :text]))
   (catch Exception e (println e))))
 
 (defn create-code-table []
@@ -36,6 +36,10 @@
 (defn insert-annotation [annotation]
   (with-connection db
     (insert-records :annotations annotation)))
+
+(defn update-annotation [annotation]
+  (with-connection db
+    (update-or-insert-values :annotations ["md5=?" (:md5 annotation)] annotation)))
 
 (defn insert-code [code]
   (with-connection db
